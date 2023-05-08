@@ -1,9 +1,9 @@
 # Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation
 This repository contains code for reproducing the experiments reported in the paper
-- Jorge Martinez-Gil, "Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation", [[arXiv preprint]](https://arxiv.org/abs/2301.00xxx), May 2023
+- Jorge Martinez-Gil, "Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation", [[arXiv preprint]](https://arxiv.org/abs/2305.03520), May 2023
 
 There is also available is an article on Medium intended for a general audience.
-- [[Applications of Context-Aware Semantic Similarity]](https://medium.com/@jorgemarcc/readability-optimization-in-python-1-3-4491a5216cf0)
+- [[Applications of Context-Aware Semantic Similarity]](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392)
 
 # Overview
 Word sense disambiguation is the task of determining the meaning of a word in context, where a word can have multiple meanings or senses. This task is important in NLP, as it can help improve the accuracy of various downstream applications, such as machine translation and information retrieval.
@@ -58,12 +58,12 @@ Run a CASS program using word2vec for synonyms candidates and the best possible 
 ``` python cass-webscrapping+bert.py```
 Run a CASS program using webscrapping for synonyms candidates and the best possible approach for disambiguating (i.e., BERT sentence embeddings)
 
-Example: Calculate a word being semantically equivalent to **nice** in the sentence *Linz is a nice city in the heart of Europe*.	
+Example: Calculate a word being semantically equivalent to **center** in the sentence *Vienna is a nice city situated in the center of the european continent*.	
 
-- cass-wordnet+bert: **decent**
-- cass-word2vec+bert: **good**
-- cass-webscrapping+bert: **good**
-- ChatGPT-4: **pleasant**
+- cass-wordnet+bert: **middle**
+- cass-word2vec+bert: **hub**
+- cass-webscrapping+bert: **mid**
+- ChatGPT-4: **middle**
 
 
 ## Results
@@ -87,12 +87,12 @@ If you use this work, please cite:
   author    = {Jorge Martinez-Gil},
   title     = {Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation},
   journal   = {CoRR},
-  volume    = {abs/2301.00xxx},
+  volume    = {abs/2305.03520},
   year      = {2023},
-  url       = {https://arxiv.org/abs/2301.00xxx},
-  doi       = {https://doi.org/10.48550/arXiv.2301.00xxx},
+  url       = {https://arxiv.org/abs/2305.03520},
+  doi       = {https://doi.org/10.48550/arXiv.2305.03520},
   eprinttype = {arXiv},
-  eprint    = {2301.00xxx}
+  eprint    = {2305.03520}
 }
 
 ```

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-[Martinez-Gil2023b] Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation, arXiv preprint arXiv:2301.00xxx, 2023
+[Martinez-Gil2023b] Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation, arXiv preprint arXiv:2305.03520, 2023
 
 @author: Jorge Martinez-Gil
 """
@@ -9,7 +9,7 @@
 from nltk.corpus import wordnet
 from sentence_transformers import SentenceTransformer, util
   
-def calculate(word, context):
+def calculate(word, context, exclude):
     
     fw = 'null'
     model = SentenceTransformer('all-MiniLM-L12-v2')
@@ -18,11 +18,12 @@ def calculate(word, context):
     for syn in wordnet.synsets(word):
         for lm in syn.lemmas():
              synonyms.append(lm.name())
+             
 
     maximum = 9999
     for i in range(len(synonyms)):
         cons = synonyms[int(i)]
-        if word.lower() != cons.lower():
+        if word.lower() not in cons.lower() and cons.lower() not in exclude.lower():
             source = context.replace(word, cons)
             source = source.replace('_', ' ')
             target = context
@@ -31,15 +32,17 @@ def calculate(word, context):
             result0 = util.cos_sim(source_embedding, target_embedding)
             resulta = [float(t.item()) for t in result0]
             result = 1-resulta[0]
-            # print ('Comparing ' + source + ' <-> ' + target + ' ' + str(result))
+            print ('Comparing ' + source + ' <-> ' + target + ' ' + str(result))
             if result < maximum:
                 fw = cons
                 maximum = result
-        
+     
+    print (synonyms) 
     return fw
-            
-text = 'Linz is a nice city in the heart of Europe'
-fr = calculate ('nice', text)
+ 
+
+text = 'Vienna is a nice city situated in the center of the european continent'
+fr = calculate ('center', text, 'centre')
 print (fr)
         
 

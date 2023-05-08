@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-[Martinez-Gil2023b] Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation, arXiv preprint arXiv:2301.00xxx, 2023
+[Martinez-Gil2023b] Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation, arXiv preprint arXiv:2305.03520, 2023
 
 @author: Jorge Martinez-Gil
 """
@@ -10,7 +10,7 @@ import gensim.downloader
 from sentence_transformers import SentenceTransformer, util
 google_news_vectors = gensim.downloader.load('word2vec-google-news-300')
       
-def calculate(word, context):
+def calculate(word, context, exclude):
     
     fw = 'null'
     model = SentenceTransformer('all-MiniLM-L12-v2')
@@ -20,7 +20,7 @@ def calculate(word, context):
     for i in range(len(synonyms)):
         cons = synonyms[int(i)]
         cons = str(cons[0])
-        if word.lower() != cons.lower():
+        if word.lower() not in cons.lower() and cons.lower() not in exclude.lower():
             source = context.replace(word, cons)
             source = source.replace('_', ' ')
             target = context
@@ -36,8 +36,8 @@ def calculate(word, context):
         
     return fw
             
-text = 'Linz is a nice city in the heart of Europe'
-fr = calculate ('nice', text)
+text = 'Vienna is a nice city situated in the center of the european continent'
+fr = calculate ('center', text, 'centre')
 print (fr)
         
 
