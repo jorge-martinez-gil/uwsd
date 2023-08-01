@@ -42,7 +42,7 @@ def calculate(word, context, exclude):
  
 
 text = 'Vienna is a nice city situated in the center of the european continent'
-fr = calculate ('center', text, 'centre')
+fr = calculate ('center', text, exclude='centre')
 print (fr)
         
 

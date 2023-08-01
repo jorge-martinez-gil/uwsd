@@ -29,15 +29,16 @@ def calculate(word, context, exclude):
             result0 = util.cos_sim(source_embedding, target_embedding)
             resulta = [float(t.item()) for t in result0]
             result = 1-resulta[0]
-            # print ('Comparing ' + source + ' <-> ' + target + ' ' + str(result))
+            print ('Comparing ' + source + ' <-> ' + target + ' ' + str(result))
             if result < maximum:
                 fw = cons
                 maximum = result
-        
+    
+    print (synonyms) 
     return fw
             
 text = 'Vienna is a nice city situated in the center of the european continent'
-fr = calculate ('center', text, 'centre')
+fr = calculate ('center', text, exclude='centre')
 print (fr)
         
 
