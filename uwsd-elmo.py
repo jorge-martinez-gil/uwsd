@@ -22,8 +22,12 @@ parent_dir = os.getcwd() + "\\CoarseWSD-20"
 # We load the model
 model = ElmoModel()
 
-# 144.zip, 193.zip, 225.zip
-model.load('225.zip')
+#Models can be downloaded from here: http://vectors.nlpl.eu/repository/
+# 144.zip, English CoNLL17 corpus
+# 193.zip, English Wikipedia Dump of February 2017
+# 209.zip, English Wikipedia Dump of October 2019
+# 225.zip, Corpus of Historical American English
+model.load('144.zip')
 
 # Corpus to work with
 sentences = []

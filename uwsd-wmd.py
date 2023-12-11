@@ -9,7 +9,7 @@
 import gensim.downloader as api
 import os
 import json
-model = api.load('word2vec-google-news-300')
+model = api.load('fasttext-wiki-news-subwords-300')
 model.init_sims(replace=True)
 
 # Define the path to the parent directory containing the folders

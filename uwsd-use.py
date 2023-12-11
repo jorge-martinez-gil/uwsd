@@ -14,7 +14,7 @@ from scipy.spatial import distance
 
 # Define the path to the parent directory containing the folders
 parent_dir = os.getcwd() + "\\CoarseWSD-20"
-embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
 
 def find_token_position(token, lst):
     for i, s in enumerate(lst):
