@@ -1,86 +1,87 @@
+
 # Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation
-This repository contains code for reproducing the experiments reported in the paper
-- Jorge Martinez-Gil, "Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation", [[arXiv preprint]](https://arxiv.org/abs/2305.03520), May 2023
 
-There is also available is an article on Medium intended for a general audience.
-- [[Applications of Context-Aware Semantic Similarity]](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392)
+This repository houses the codebase for replicating the experiments detailed in Jorge Martinez-Gil's paper on Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation. Discover more insights and applications through our [arXiv preprint](https://arxiv.org/abs/2305.03520) and an accessible [Medium article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392).
 
-# Overview
-Word sense disambiguation is the task of determining the meaning of a word in context, where a word can have multiple meanings or senses. This task is important in NLP, as it can help improve the accuracy of various downstream applications, such as machine translation and information retrieval.
+## Overview 🌍
 
-This repository provides an approach for unsupervised word sense disambiguation using context-aware semantic similarity measurement. The approach involves the following steps:
+Word sense disambiguation (WSD) plays a pivotal role in Natural Language Processing (NLP). It involves deciphering the intended meaning of a word in a multi-sense context, which is crucial for enhancing the performance of applications like machine translation and information retrieval.
 
-- Preprocess the input text.
-- Extract the context of the ambiguous word, including a window of surrounding words.
-- Calculate the semantic similarity between the context of the ambiguous word and the context of each possible sense of the word, using pre-trained sentence embeddings and a measure of cosine similarity.
-- Select the sense with the highest semantic similarity score as the correct sense of the ambiguous word.
+Our repository offers an innovative unsupervised approach to WSD using context-aware semantic similarity:
 
-The repository includes code for implementing this approach, as well as pre-trained word embeddings and test data for evaluation.
+1. **Preprocessing**: Clean and prepare your text data.
+2. **Context Extraction**: Identify the context surrounding the ambiguous word.
+3. **Semantic Similarity**: Utilize pre-trained sentence embeddings and cosine similarity to evaluate semantic parallels.
+4. **Sense Selection**: Choose the sense with the highest similarity score.
 
-# Install
-``` pip install -r requirements.txt```
+Included are the necessary code, pre-trained embeddings, and test data for thorough evaluation.
 
-# Dataset
-We use an adaption of the CoarseWSD-20 dataset. CoarseWSD-20 is a publicly available dataset for coarse-grained word sense disambiguation, containing instances of 20 ambiguous words.
+## Installation 🛠️
 
-# Usage
-To use this approach for unsupervised word sense disambiguation, follow these steps:
+```bash
+pip install -r requirements.txt
+```
 
-- Clone the repository to your local machine.
-- Install the required libraries and tools (see above).
-- Download and extract the pre-trained word embeddings to the data directory.
-- Run the corresponding script (see below)
-- The script will output the results to the console.
+## Dataset 📊
 
-# Evaluation
-The repository includes test data for evaluating the performance of the context-aware semantic similarity measurement approach. To run the evaluation, follow these steps:
+The CoarseWSD-20 dataset, a well-known resource for coarse-grained WSD, forms the backbone of our experiments. It encompasses 20 commonly ambiguous words.
 
-``` python uwsd_bert.py```
-Run the UWSD program using BERT sentence embeddings.
+## Usage Guide 🚀
 
-``` python uwsd_elmo.py```
-Run the WSD program using ELMo sentence embeddings.
+Follow these steps to apply our method:
 
-``` python uwsd_use.py```
-Run the UWSD program using Universal Sentence Encoder (USE) embeddings.
+1. Clone this repository.
+2. Install dependencies (refer to the installation section).
+3. Download and position pre-trained word embeddings in the data directory.
+4. Execute the script of your choice and observe the results in your console.
 
-``` python uwsd_wmd.py```
-Run the UWSD program using Words Mover Distance (WMD) approach.
+## Evaluation 📝
 
-Additionally, a program is included that allows to conveniently calculate context-aware semantic similarity for inclusion in software projects.
+Evaluate our approach using the provided test data.
 
-``` python cass-wordnet+bert.py```
-Run a CASS program using WordNet for synonyms candidates and the best possible approach for disambiguating (i.e., BERT sentence embeddings)
+**Unsupervised Word Sense Disambiguation (UWSD):**
+ - `python uwsd_bert.py` - BERT
+ - `python uwsd_elmo.py` - ELMo
+ - `python uwsd_use.py` - Universal Sentence Encoder (USE)
+ - `python uwsd_wmd.py` - Word Mover's Distance (WMD)
 
-``` python cass-word2vec+bert.py```
-Run a CASS program using word2vec for synonyms candidates and the best possible approach for disambiguating (i.e., BERT sentence embeddings)
+**Context-Aware Semantic Similarity (CASS):**
+ - `python cass-wordnet+bert.py` - CASS using WordNet and BERT
+ - `python cass-word2vec+bert.py` - CASS using word2vec and BERT
+ - `python cass-webscrapping+bert.py` - CASS using webscraping and BERT
 
-``` python cass-webscrapping+bert.py```
-Run a CASS program using webscrapping for synonyms candidates and the best possible approach for disambiguating (i.e., BERT sentence embeddings)
+**Example Scenario UWSD:**
+ - *Typed object-oriented programming languages, such as **java** and c++ , often do not support first-class methods*
+--> *options* (island, programming language)
+	 - uwsd_bert: **programming language** 
+	 - uwsd_elmo: **programming language**
+	 - uwsd_use: **programming language** 
+	 - uwsd_wmd: **programming language** 
+	 - ChatGPT-4: **programming language**
 
-Example: Calculate a word being semantically equivalent to **center** in the sentence *Vienna is a nice city situated in the center of the european continent*.	
+**Example Scenario CASS:**
+- *Vienna is a nice city situated in the **center** of the European continent.*
+  - cass-wordnet+bert: **middle**
+  - cass-word2vec+bert: **hub**
+  - cass-webscrapping+bert: **mid**
+  - ChatGPT-4: **middle**
 
-- cass-wordnet+bert: **middle**
-- cass-word2vec+bert: **hub**
-- cass-webscrapping+bert: **mid**
-- ChatGPT-4: **middle**
+## Performance Results 📈
 
-
-## Results
 The summary of the results in terms of the CoarseWSD-20 dataset disambiguation is:
 
 | Strategy  |  Hits  |  Accuracy |
 | ------------ | ------------ | ------------ |
 | UWSD+BERT  |  7,927  | 77.74%   |
 | MFS-Baseline  | 7,487  |  73.43% |
+| UWSD+USE | 7,335 | 71.94% |
 | UWSD+ELMo | 7,010 | 68.75% |
-| UWSD+USE | 6,396 | 62.73% |
 | UWSD+WMD | 5,868 | 57.55% |
 | RO-Baseline | 4,459 | 43.73% |
 
+## Citation 📚
 
-## Citation
-If you use this work, please cite:
+If you utilize our work, kindly cite us:
 
 ```
 @inproceedings{martinez2023b,
@@ -97,5 +98,6 @@ If you use this work, please cite:
 
 ```
 
-# License
-This code is released under the MIT License. See the LICENSE file for more information.
+## License 📄
+
+Released under the MIT License. [View License](LICENSE).
