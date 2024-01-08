@@ -3,7 +3,7 @@
 
 This repository houses the codebase for replicating the experiments detailed in Jorge Martinez-Gil's paper on Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation. Discover more insights and applications through our [arXiv preprint](https://arxiv.org/abs/2305.03520) and an accessible [Medium article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392).
 
-## Overview 🌍
+## 🌍 Overview 
 
 Word sense disambiguation (WSD) plays a pivotal role in Natural Language Processing (NLP). It involves deciphering the intended meaning of a word in a multi-sense context, which is crucial for enhancing the performance of applications like machine translation and information retrieval.
 
@@ -16,17 +16,17 @@ Our repository offers an innovative unsupervised approach to WSD using context-a
 
 Included are the necessary code, pre-trained embeddings, and test data for thorough evaluation.
 
-## Installation 🛠️
+## 🛠️ Installation 
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Dataset 📊
+## 📊 Dataset 
 
 The CoarseWSD-20 dataset, a well-known resource for coarse-grained WSD, forms the backbone of our experiments. It encompasses 20 commonly ambiguous words.
 
-## Usage Guide 🚀
+## 🚀 Usage Guide 
 
 Follow these steps to apply our method:
 
@@ -35,7 +35,7 @@ Follow these steps to apply our method:
 3. Download and position pre-trained word embeddings in the data directory.
 4. Execute the script of your choice and observe the results in your console.
 
-## Evaluation 📝
+## 📝 Evaluation 
 
 Evaluate our approach using the provided test data.
 
@@ -66,7 +66,7 @@ Evaluate our approach using the provided test data.
   - cass-webscrapping+bert: **mid**
   - ChatGPT-4: **middle**
 
-## Performance Results 📈
+## 📈 Performance Results 
 
 The summary of the results in terms of the CoarseWSD-20 dataset disambiguation is:
 
@@ -79,7 +79,7 @@ The summary of the results in terms of the CoarseWSD-20 dataset disambiguation i
 | UWSD+WMD | 5,868 | 57.55% |
 | RO-Baseline | 4,459 | 43.73% |
 
-## Citation 📚
+## 📚 Citation 
 
 If you utilize our work, kindly cite us:
 
@@ -98,6 +98,6 @@ If you utilize our work, kindly cite us:
 
 ```
 
-## License 📄
+## 📄 License 
 
 Released under the MIT License. [View License](LICENSE).
