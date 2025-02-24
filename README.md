@@ -98,6 +98,15 @@ If you utilize our work, kindly cite us:
 
 ```
 
+## 📖 Research that has cited this work
+
+1. **[Pantip Multi-turn Datasets Generating from Thai Large Social Platform Forum Using Sentence Similarity Techniques](https://ieeexplore.ieee.org/iel8/10799229/10799211/10799403.pdf)**
+   - **Authors:** A. Sae-Oueng, K. Kerdthaisong, …
+   - **Conference:** *Joint Symposium on …*, 2024 (IEEE)
+   - **Abstract:** Fine-tuning Large Language Models (LLMs) for specific domains is crucial. However, the lack of Thai open dialogues presents a major challenge. For this challenge, the study proposes generating multi-turn dialogue datasets from Pantip, a large Thai social platform forum, using sentence similarity techniques.
+
+
+
 ## 📄 License 
 
 Released under the MIT License. [View License](LICENSE).
