@@ -3,6 +3,8 @@
 
 This repository houses the codebase for replicating the experiments detailed in Jorge Martinez-Gil's paper on Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation. Discover more insights and applications through our [arXiv preprint](https://arxiv.org/abs/2305.03520) and an accessible [Medium article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392).
 
+[![arXiv preprint](https://img.shields.io/badge/arXiv-2305.03520-brightgreen.svg)](https://arxiv.org/abs/2305.03520) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Citations](https://img.shields.io/badge/citations-1-blue)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
+
 ![Summary](uwsd.png)
 
 ## 🌍 Overview 
@@ -100,6 +102,15 @@ If you utilize our work, kindly cite us:
 }
 
 ```
+
+## 📖 Research that has cited this work
+
+1. **[Pantip Multi-turn Datasets Generating from Thai Large Social Platform Forum Using Sentence Similarity Techniques](https://ieeexplore.ieee.org/iel8/10799229/10799211/10799403.pdf)**
+   - **Authors:** A. Sae-Oueng, K. Kerdthaisong, …
+   - **Conference:** *Joint Symposium on …*, 2024 (IEEE)
+   - **Abstract:** Fine-tuning Large Language Models (LLMs) for specific domains is crucial. However, the lack of Thai open dialogues presents a major challenge. For this challenge, the study proposes generating multi-turn dialogue datasets from Pantip, a large Thai social platform forum, using sentence similarity techniques.
+
+
 
 ## 📄 License 
 
