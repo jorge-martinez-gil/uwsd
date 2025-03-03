@@ -3,13 +3,15 @@
 
 This repository houses the codebase for replicating the experiments detailed in Jorge Martinez-Gil's paper on Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation. Discover more insights and applications through our [arXiv preprint](https://arxiv.org/abs/2305.03520) and an accessible [Medium article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392).
 
+![Summary](uwsd.png)
+
 ## 🌍 Overview 
 
-Word sense disambiguation (WSD) plays a pivotal role in Natural Language Processing (NLP). It involves deciphering the intended meaning of a word in a multi-sense context, which is crucial for enhancing the performance of applications like machine translation and information retrieval.
+Word sense disambiguation (WSD) plays an important role in Natural Language Processing (NLP). It involves deciphering the intended meaning of a word in a multi-sense context, which is crucial for improving the performance of applications like machine translation and information retrieval.
 
 Our repository offers an innovative unsupervised approach to WSD using context-aware semantic similarity:
 
-1. **Preprocessing**: Clean and prepare your text data.
+1. **Preprocessing**: Clean and prepare the text data.
 2. **Context Extraction**: Identify the context surrounding the ambiguous word.
 3. **Semantic Similarity**: Utilize pre-trained sentence embeddings and cosine similarity to evaluate semantic parallels.
 4. **Sense Selection**: Choose the sense with the highest similarity score.
@@ -24,7 +26,7 @@ pip install -r requirements.txt
 
 ## 📊 Dataset 
 
-The CoarseWSD-20 dataset, a well-known resource for coarse-grained WSD, forms the backbone of our experiments. It encompasses 20 commonly ambiguous words.
+The CoarseWSD-20 dataset, a well-known resource for coarse-grained WSD, forms the backbone of our experiments. It includes 20 commonly ambiguous words.
 
 ## 🚀 Usage Guide 
 
@@ -34,6 +36,7 @@ Follow these steps to apply our method:
 2. Install dependencies (refer to the installation section).
 3. Download and position pre-trained word embeddings in the data directory.
 4. Execute the script of your choice and observe the results in your console.
+5. For best performance, use scripts prepared to work with GPUs.
 
 ## 📝 Evaluation 
 
