@@ -110,7 +110,7 @@ If you utilize our work, kindly cite us:
    - **Conference:** *Joint Symposium on …*, 2024 (IEEE)
    - **Abstract:** Fine-tuning Large Language Models (LLMs) for specific domains is crucial. However, the lack of Thai open dialogues presents a major challenge. For this challenge, the study proposes generating multi-turn dialogue datasets from Pantip, a large Thai social platform forum, using sentence similarity techniques.
   
-2. **[GlossGPT: GPT for Word Sense Disambiguation using Few-shot Chain-of-Thought Prompting](https://www.sciencedirect.com/science/article/pii/S1877050925008385/pdf?md5=293d431d6e660d73e125df97da5d2804&pid=1-s2.0-S1877050925008385-main.pdf))**  
+2. **[GlossGPT: GPT for Word Sense Disambiguation using Few-shot Chain-of-Thought Prompting](https://www.sciencedirect.com/science/article/pii/S1877050925008385/pdf?md5=293d431d6e660d73e125df97da5d2804&pid=1-s2.0-S1877050925008385-main.pdf)**  
    - **Authors:** D. Sumanathilaka, N. Micallef, J. Hough  
    - **Conference:** *Procedia Computer Science*, 2025 (Elsevier)  
    - **Abstract:** Lexical ambiguity is a major challenge in computational linguistic tasks, as limitations in proper sense identification lead to inefficient translation and question answering. This study presents *GlossGPT*, a GPT-based few-shot method for word sense disambiguation using chain-of-thought prompting. Incorporating gloss definitions in the prompt improves sense resolution across multiple benchmark datasets.
