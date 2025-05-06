@@ -3,7 +3,7 @@
 
 This repository houses the codebase for replicating the experiments detailed in Jorge Martinez-Gil's paper on Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation. Discover more insights and applications through our [arXiv preprint](https://arxiv.org/abs/2305.03520) and an accessible [Medium article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392).
 
-[![arXiv preprint](https://img.shields.io/badge/arXiv-2305.03520-brightgreen.svg)](https://arxiv.org/abs/2305.03520) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Citations](https://img.shields.io/badge/citations-1-blue)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
+[![arXiv preprint](https://img.shields.io/badge/arXiv-2305.03520-brightgreen.svg)](https://arxiv.org/abs/2305.03520) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Citations](https://img.shields.io/badge/citations-2-blue)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
 
 ![Summary](uwsd.png)
 
@@ -109,6 +109,12 @@ If you utilize our work, kindly cite us:
    - **Authors:** A. Sae-Oueng, K. Kerdthaisong, …
    - **Conference:** *Joint Symposium on …*, 2024 (IEEE)
    - **Abstract:** Fine-tuning Large Language Models (LLMs) for specific domains is crucial. However, the lack of Thai open dialogues presents a major challenge. For this challenge, the study proposes generating multi-turn dialogue datasets from Pantip, a large Thai social platform forum, using sentence similarity techniques.
+  
+2. **[GlossGPT: GPT for Word Sense Disambiguation using Few-shot Chain-of-Thought Prompting](https://www.sciencedirect.com/science/article/pii/S1877050925008385/pdf?md5=293d431d6e660d73e125df97da5d2804&pid=1-s2.0-S1877050925008385-main.pdf))**  
+   - **Authors:** D. Sumanathilaka, N. Micallef, J. Hough  
+   - **Conference:** *Procedia Computer Science*, 2025 (Elsevier)  
+   - **Abstract:** Lexical ambiguity is a major challenge in computational linguistic tasks, as limitations in proper sense identification lead to inefficient translation and question answering. This study presents *GlossGPT*, a GPT-based few-shot method for word sense disambiguation using chain-of-thought prompting. Incorporating gloss definitions in the prompt improves sense resolution across multiple benchmark datasets.
+
 
 
 
