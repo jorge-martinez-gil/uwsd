@@ -1,4 +1,4 @@
-# UWSD — Unsupervised Word Sense Disambiguation Benchmark
+# UWSD: Unsupervised Word Sense Disambiguation Benchmark
 
 **A reproducible benchmark and experimentation platform for unsupervised word sense disambiguation (WSD) via context-aware semantic similarity.**
 
