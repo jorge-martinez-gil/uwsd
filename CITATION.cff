@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "UWSD: Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation"
+message: "If you use this software or benchmark, please cite the paper below."
+type: software
+authors:
+  - family-names: Martinez-Gil
+    given-names: Jorge
+repository-code: "https://github.com/jorge-martinez-gil/uwsd"
+license: MIT
+keywords:
+  - word sense disambiguation
+  - unsupervised WSD
+  - semantic similarity
+  - contextual embeddings
+  - lexical ambiguity
+preferred-citation:
+  type: article
+  title: "Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation"
+  authors:
+    - family-names: Martinez-Gil
+      given-names: Jorge
+  year: 2023
+  journal: "CoRR"
+  volume: "abs/2305.03520"
+  url: "https://arxiv.org/abs/2305.03520"
+  doi: "10.48550/arXiv.2305.03520"

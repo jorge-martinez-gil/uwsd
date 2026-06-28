@@ -1,0 +1,214 @@
+{
+  "method": {
+    "name": "mfs",
+    "config": {}
+  },
+  "dataset": {
+    "name": "CoarseWSD-20",
+    "words": [
+      "apple",
+      "arm",
+      "bank",
+      "bass",
+      "bow",
+      "chair",
+      "club",
+      "crane",
+      "deck",
+      "digit",
+      "hood",
+      "java",
+      "mole",
+      "pitcher",
+      "pound",
+      "seal",
+      "spring",
+      "square",
+      "trunk",
+      "yard"
+    ],
+    "num_test_instances": 10196,
+    "limit_per_word": null
+  },
+  "metrics": {
+    "micro_accuracy": 0.7343075715967046,
+    "accuracy_ci95": [
+      0.7256742840329541,
+      0.7424504707728521
+    ],
+    "macro_f1_over_words": 0.3322633473329766,
+    "weighted_f1_over_words": 0.6371240613450797,
+    "hits": 7487,
+    "n": 10196,
+    "per_word": {
+      "apple": {
+        "n": 1032,
+        "hits": 634,
+        "accuracy": 0.6143410852713178,
+        "macro_f1": 0.38055222088835533,
+        "weighted_f1": 0.46757772876592496,
+        "num_senses": 2
+      },
+      "arm": {
+        "n": 164,
+        "hits": 121,
+        "accuracy": 0.7378048780487805,
+        "macro_f1": 0.4245614035087719,
+        "weighted_f1": 0.6264869490800171,
+        "num_senses": 2
+      },
+      "bank": {
+        "n": 455,
+        "hits": 433,
+        "accuracy": 0.9516483516483516,
+        "macro_f1": 0.4876126126126126,
+        "weighted_f1": 0.9280714780714779,
+        "num_senses": 2
+      },
+      "bass": {
+        "n": 1391,
+        "hits": 1005,
+        "accuracy": 0.7225017972681524,
+        "macro_f1": 0.27963272120200333,
+        "weighted_f1": 0.6061054309302948,
+        "num_senses": 3
+      },
+      "bow": {
+        "n": 215,
+        "hits": 117,
+        "accuracy": 0.5441860465116279,
+        "macro_f1": 0.23493975903614459,
+        "weighted_f1": 0.38355281591482204,
+        "num_senses": 3
+      },
+      "chair": {
+        "n": 130,
+        "hits": 88,
+        "accuracy": 0.676923076923077,
+        "macro_f1": 0.4036697247706422,
+        "weighted_f1": 0.5465067043048695,
+        "num_senses": 2
+      },
+      "club": {
+        "n": 202,
+        "hits": 108,
+        "accuracy": 0.5346534653465347,
+        "macro_f1": 0.23225806451612904,
+        "weighted_f1": 0.3725327371446822,
+        "num_senses": 3
+      },
+      "crane": {
+        "n": 157,
+        "hits": 81,
+        "accuracy": 0.5159235668789809,
+        "macro_f1": 0.34033613445378147,
+        "weighted_f1": 0.3511748648503987,
+        "num_senses": 2
+      },
+      "deck": {
+        "n": 99,
+        "hits": 92,
+        "accuracy": 0.9292929292929293,
+        "macro_f1": 0.4816753926701571,
+        "weighted_f1": 0.8952350732455444,
+        "num_senses": 2
+      },
+      "digit": {
+        "n": 42,
+        "hits": 33,
+        "accuracy": 0.7857142857142857,
+        "macro_f1": 0.44,
+        "weighted_f1": 0.6914285714285714,
+        "num_senses": 2
+      },
+      "hood": {
+        "n": 82,
+        "hits": 47,
+        "accuracy": 0.573170731707317,
+        "macro_f1": 0.2428940568475452,
+        "weighted_f1": 0.4176592928719985,
+        "num_senses": 3
+      },
+      "java": {
+        "n": 1929,
+        "hits": 1180,
+        "accuracy": 0.6117159149818558,
+        "macro_f1": 0.37954326149887424,
+        "weighted_f1": 0.4643453069659633,
+        "num_senses": 2
+      },
+      "mole": {
+        "n": 206,
+        "hits": 77,
+        "accuracy": 0.3737864077669903,
+        "macro_f1": 0.1088339222614841,
+        "weighted_f1": 0.20340320422656008,
+        "num_senses": 5
+      },
+      "pitcher": {
+        "n": 2819,
+        "hits": 2806,
+        "accuracy": 0.9953884356154665,
+        "macro_f1": 0.4988444444444445,
+        "weighted_f1": 0.9930879823420441,
+        "num_senses": 2
+      },
+      "pound": {
+        "n": 97,
+        "hits": 87,
+        "accuracy": 0.8969072164948454,
+        "macro_f1": 0.4728260869565218,
+        "weighted_f1": 0.8481622590766473,
+        "num_senses": 2
+      },
+      "seal": {
+        "n": 363,
+        "hits": 131,
+        "accuracy": 0.3608815426997245,
+        "macro_f1": 0.1325910931174089,
+        "weighted_f1": 0.1913987129298134,
+        "num_senses": 4
+      },
+      "spring": {
+        "n": 457,
+        "hits": 236,
+        "accuracy": 0.5164113785557987,
+        "macro_f1": 0.22703222703222703,
+        "weighted_f1": 0.35172607601491623,
+        "num_senses": 3
+      },
+      "square": {
+        "n": 207,
+        "hits": 103,
+        "accuracy": 0.4975845410628019,
+        "macro_f1": 0.16612903225806452,
+        "weighted_f1": 0.33065295309334586,
+        "num_senses": 4
+      },
+      "trunk": {
+        "n": 77,
+        "hits": 47,
+        "accuracy": 0.6103896103896104,
+        "macro_f1": 0.2526881720430107,
+        "weighted_f1": 0.4627147046501885,
+        "num_senses": 3
+      },
+      "yard": {
+        "n": 72,
+        "hits": 61,
+        "accuracy": 0.8472222222222222,
+        "macro_f1": 0.45864661654135336,
+        "weighted_f1": 0.7771512113617376,
+        "num_senses": 2
+      }
+    }
+  },
+  "environment": {
+    "uwsd_version": "0.2.0",
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+    "git_commit": "9a667c7",
+    "numpy_version": "2.2.6"
+  },
+  "timestamp_utc": "2026-06-28T13:51:22.017086+00:00"
+}

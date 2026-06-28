@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uwsd"
+version = "0.2.0"
+description = "Benchmark and experimentation platform for unsupervised word sense disambiguation via context-aware semantic similarity."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Jorge Martinez-Gil", email = "jorgemarcc@gmail.com" }]
+keywords = [
+  "word sense disambiguation",
+  "unsupervised WSD",
+  "semantic similarity",
+  "contextual embeddings",
+  "lexical ambiguity",
+  "WSD benchmark",
+  "NLP",
+  "WordNet",
+  "sentence transformers",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+  "numpy>=1.21",
+]
+
+[project.optional-dependencies]
+bert = ["sentence-transformers>=2.0.0"]
+wmd = ["gensim>=4.2.0", "nltk>=3.6"]
+use = ["tensorflow-hub>=0.12.0"]
+all = ["sentence-transformers>=2.0.0", "gensim>=4.2.0", "nltk>=3.6", "tensorflow-hub>=0.12.0"]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/jorge-martinez-gil/uwsd"
+Paper = "https://arxiv.org/abs/2305.03520"
+Issues = "https://github.com/jorge-martinez-gil/uwsd/issues"
+
+[project.scripts]
+uwsd = "uwsd.cli:main"
+
+[tool.setuptools]
+packages = ["uwsd", "uwsd.methods"]
+
+[tool.setuptools.package-data]
+uwsd = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

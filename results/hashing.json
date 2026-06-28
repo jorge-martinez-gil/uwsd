@@ -1,0 +1,218 @@
+{
+  "method": {
+    "name": "similarity",
+    "encoder": "hashing-512d-3gram",
+    "config": {
+      "model": "all-MiniLM-L6-v2",
+      "backend": "sentence-transformer"
+    }
+  },
+  "dataset": {
+    "name": "CoarseWSD-20",
+    "words": [
+      "apple",
+      "arm",
+      "bank",
+      "bass",
+      "bow",
+      "chair",
+      "club",
+      "crane",
+      "deck",
+      "digit",
+      "hood",
+      "java",
+      "mole",
+      "pitcher",
+      "pound",
+      "seal",
+      "spring",
+      "square",
+      "trunk",
+      "yard"
+    ],
+    "num_test_instances": 10196,
+    "limit_per_word": null
+  },
+  "metrics": {
+    "micro_accuracy": 0.5504119262455865,
+    "accuracy_ci95": [
+      0.5410945468811299,
+      0.5600259905845429
+    ],
+    "macro_f1_over_words": 0.27949226914926617,
+    "weighted_f1_over_words": 0.4735079632019228,
+    "hits": 5612,
+    "n": 10196,
+    "per_word": {
+      "apple": {
+        "n": 1032,
+        "hits": 438,
+        "accuracy": 0.42441860465116277,
+        "macro_f1": 0.37205957673475243,
+        "weighted_f1": 0.33059403784793073,
+        "num_senses": 2
+      },
+      "arm": {
+        "n": 164,
+        "hits": 45,
+        "accuracy": 0.27439024390243905,
+        "macro_f1": 0.22601626016260162,
+        "weighted_f1": 0.13398770573071586,
+        "num_senses": 2
+      },
+      "bank": {
+        "n": 455,
+        "hits": 22,
+        "accuracy": 0.04835164835164835,
+        "macro_f1": 0.04612159329140461,
+        "weighted_f1": 0.004460110120487478,
+        "num_senses": 2
+      },
+      "bass": {
+        "n": 1391,
+        "hits": 88,
+        "accuracy": 0.06326383896477354,
+        "macro_f1": 0.03966644128915934,
+        "weighted_f1": 0.007528354062069063,
+        "num_senses": 3
+      },
+      "bow": {
+        "n": 215,
+        "hits": 30,
+        "accuracy": 0.13953488372093023,
+        "macro_f1": 0.09603345036415901,
+        "weighted_f1": 0.061501826013820156,
+        "num_senses": 3
+      },
+      "chair": {
+        "n": 130,
+        "hits": 88,
+        "accuracy": 0.676923076923077,
+        "macro_f1": 0.4036697247706422,
+        "weighted_f1": 0.5465067043048695,
+        "num_senses": 2
+      },
+      "club": {
+        "n": 202,
+        "hits": 73,
+        "accuracy": 0.3613861386138614,
+        "macro_f1": 0.17696969696969697,
+        "weighted_f1": 0.19186318631863186,
+        "num_senses": 3
+      },
+      "crane": {
+        "n": 157,
+        "hits": 84,
+        "accuracy": 0.535031847133758,
+        "macro_f1": 0.4022323058467636,
+        "weighted_f1": 0.4112052478256145,
+        "num_senses": 2
+      },
+      "deck": {
+        "n": 99,
+        "hits": 89,
+        "accuracy": 0.898989898989899,
+        "macro_f1": 0.4734042553191489,
+        "weighted_f1": 0.8798624543305394,
+        "num_senses": 2
+      },
+      "digit": {
+        "n": 42,
+        "hits": 14,
+        "accuracy": 0.3333333333333333,
+        "macro_f1": 0.32723112128146453,
+        "weighted_f1": 0.2906178489702517,
+        "num_senses": 2
+      },
+      "hood": {
+        "n": 82,
+        "hits": 21,
+        "accuracy": 0.25609756097560976,
+        "macro_f1": 0.1585329784087548,
+        "weighted_f1": 0.1400437163200381,
+        "num_senses": 3
+      },
+      "java": {
+        "n": 1929,
+        "hits": 1184,
+        "accuracy": 0.6137895282529808,
+        "macro_f1": 0.3853442911125225,
+        "weighted_f1": 0.46906869349988434,
+        "num_senses": 2
+      },
+      "mole": {
+        "n": 206,
+        "hits": 43,
+        "accuracy": 0.2087378640776699,
+        "macro_f1": 0.1208869179600887,
+        "weighted_f1": 0.09807977956213806,
+        "num_senses": 5
+      },
+      "pitcher": {
+        "n": 2819,
+        "hits": 2806,
+        "accuracy": 0.9953884356154665,
+        "macro_f1": 0.4988444444444445,
+        "weighted_f1": 0.9930879823420441,
+        "num_senses": 2
+      },
+      "pound": {
+        "n": 97,
+        "hits": 86,
+        "accuracy": 0.8865979381443299,
+        "macro_f1": 0.5465363365915852,
+        "weighted_f1": 0.8582594713482677,
+        "num_senses": 2
+      },
+      "seal": {
+        "n": 363,
+        "hits": 141,
+        "accuracy": 0.3884297520661157,
+        "macro_f1": 0.2607110026973238,
+        "weighted_f1": 0.3025231192018397,
+        "num_senses": 4
+      },
+      "spring": {
+        "n": 457,
+        "hits": 150,
+        "accuracy": 0.3282275711159737,
+        "macro_f1": 0.18148684371646104,
+        "weighted_f1": 0.16779880681401488,
+        "num_senses": 3
+      },
+      "square": {
+        "n": 207,
+        "hits": 103,
+        "accuracy": 0.4975845410628019,
+        "macro_f1": 0.16612903225806452,
+        "weighted_f1": 0.33065295309334586,
+        "num_senses": 4
+      },
+      "trunk": {
+        "n": 77,
+        "hits": 46,
+        "accuracy": 0.5974025974025974,
+        "macro_f1": 0.24932249322493225,
+        "weighted_f1": 0.45655157850279804,
+        "num_senses": 3
+      },
+      "yard": {
+        "n": 72,
+        "hits": 61,
+        "accuracy": 0.8472222222222222,
+        "macro_f1": 0.45864661654135336,
+        "weighted_f1": 0.7771512113617376,
+        "num_senses": 2
+      }
+    }
+  },
+  "environment": {
+    "uwsd_version": "0.2.0",
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+    "git_commit": "9a667c7",
+    "numpy_version": "2.2.6"
+  },
+  "timestamp_utc": "2026-06-28T13:51:29.362620+00:00"
+}
