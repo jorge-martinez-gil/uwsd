@@ -1,197 +1,242 @@
-# UWSD: Unsupervised Word Sense Disambiguation Benchmark
+<div align="center">
 
-**A reproducible benchmark and experimentation platform for unsupervised word sense disambiguation (WSD) via context-aware semantic similarity.**
+# 🔠 UWSD: Unsupervised Word Sense Disambiguation
 
-[![arXiv preprint](https://img.shields.io/badge/arXiv-2305.03520-brightgreen.svg)](https://arxiv.org/abs/2305.03520) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Citations](https://img.shields.io/badge/citations-3-blue)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
+**A reproducible benchmark & experimentation platform for unsupervised word sense disambiguation via context-aware semantic similarity.**
 
-This repository accompanies Jorge Martinez-Gil's paper *Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation* ([arXiv:2305.03520](https://arxiv.org/abs/2305.03520); [Medium summary](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392)). It has grown from the paper's original scripts into an **installable Python package with a one-command benchmark CLI**, so that anyone proposing a new unsupervised WSD method can evaluate it on a common footing and compare against published baselines.
+[![arXiv](https://img.shields.io/badge/arXiv-2305.03520-b31b1b.svg?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2305.03520)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Dataset](https://img.shields.io/badge/Dataset-CoarseWSD--20-orange.svg?style=flat-square)](https://github.com/danlou/bert-disambiguation)
+[![Citations](https://img.shields.io/badge/Scholar-3%20Citations-4285F4.svg?style=flat-square&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
 
-![Summary](uwsd.png)
+[Paper](https://arxiv.org/abs/2305.03520) • [Medium Article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392) • [Quickstart](#-quickstart-cli) • [Python API](#-python-api) • [Citation](#-citation)
 
----
+<br/>
 
-## Table of contents
+<img src="uwsd.png" alt="UWSD Overview Architecture" width="750" />
 
-- [What problem does this solve?](#what-problem-does-this-solve)
-- [Why unsupervised WSD?](#why-unsupervised-wsd)
-- [How this differs from supervised WSD](#how-this-differs-from-supervised-wsd)
-- [Install](#install)
-- [Quickstart (CLI)](#quickstart-cli)
-- [Reproducing the published experiments](#reproducing-the-published-experiments)
-- [Evaluate your own WSD algorithm](#evaluate-your-own-wsd-algorithm)
-- [Add a new embedding model / similarity measure](#add-a-new-embedding-model--similarity-measure)
-- [Python API](#python-api)
-- [Interpretability](#interpretability)
-- [Results](#results)
-- [Dataset](#dataset)
-- [Citation](#citation)
-- [Research that has cited this work](#research-that-has-cited-this-work)
-- [Contributing](#contributing)
-- [License](#license)
+</div>
 
 ---
 
-## What problem does this solve?
+## 🌟 Overview
 
-Many words have more than one meaning. *Java* can be a programming language or an island; *bank* can be a financial institution or the side of a river. **Word sense disambiguation (WSD)** is the task of selecting the intended sense of an ambiguous word given its context. It underpins machine translation, information retrieval, question answering, and knowledge-graph construction.
+Many words carry multiple meanings. For instance, **"Java"** can refer to a programming language or an island; **"bank"** can mean a financial institution or a river bank. **Word Sense Disambiguation (WSD)** is the NLP task of identifying which sense of an ambiguous word is intended in a given context.
 
-This project provides:
-
-1. A faithful, well-tested implementation of the **context-aware semantic-similarity** approach to *unsupervised* WSD.
-2. A **standard benchmark harness** so different methods, encoders, and similarity measures are evaluated identically.
-3. **Reproducible, traceable results**: every run emits a JSON manifest containing the metrics, a 95% bootstrap confidence interval, the environment, and the git commit.
-
-## Why unsupervised WSD?
-
-Supervised WSD needs large amounts of sense-annotated text, which is expensive, language-specific, and quickly goes stale as senses drift. **Unsupervised** WSD needs no sense-labelled training data — only a sense inventory (candidate meanings) and a sentence encoder. That makes it attractive for low-resource languages, technical/biomedical/software terminology, and rapidly evolving domains.
-
-The core idea here: to disambiguate a word, **substitute each candidate sense's phrase into the sentence and measure how well meaning is preserved** (via embedding cosine similarity). The sense whose substitution keeps the sentence closest to the original wins. No training labels are used.
-
-## How this differs from supervised WSD
-
-| | Supervised WSD | This (unsupervised) |
-| --- | --- | --- |
-| Needs sense-annotated training data | Yes | **No** |
-| Adapts to new domains/languages | Retrain | Swap the encoder / sense inventory |
-| What it learns from | Labelled examples | Pretrained sentence embeddings |
-| Baselines here | MFS (uses train labels) | substitution-similarity, random |
-
-The Most-Frequent-Sense (MFS) baseline *does* use training labels and is included as a strong reference point that unsupervised methods aim to beat.
+**UWSD** accompanies the paper *"Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation"* ([arXiv:2305.03520](https://arxiv.org/abs/2305.03520)). It provides an **installable Python package and single-command benchmark CLI** for evaluating unsupervised WSD methods, custom transformer encoders, and similarity measures under standardized, reproducible conditions.
 
 ---
 
-## Install
+## ✨ Key Features
 
-```bash
-git clone https://github.com/jorge-martinez-gil/uwsd
-cd uwsd
-pip install -e .            # core (numpy only)
-pip install -e ".[bert]"    # + sentence-transformers for BERT/SBERT methods
-pip install -e ".[all]"     # + gensim/WMD and tensorflow-hub/USE
+| Feature | Description |
+| :--- | :--- |
+| ⚡ **Zero-Shot & Unsupervised** | No sense-labelled training data required. Disambiguates words using sentence embeddings & substitution similarity. |
+| 📊 **Standardized Harness** | Built-in loader for **CoarseWSD-20**, paired 95% bootstrap confidence intervals, and McNemar statistical significance testing. |
+| 🧪 **Reproducible Manifests** | Every run automatically generates a JSON manifest with exact metrics, git commit, system metadata, and hardware config. |
+| 🎯 **Interpretable Predictions** | Generates human-readable explanations, candidate similarity margins, and low-confidence flags for every prediction. |
+| 🔌 **Pluggable Architecture** | Benchmark your own Hugging Face model or custom WSD algorithm in less than 10 lines of code. |
+| 🛠️ **CLI & Python API** | Seamless CLI commands (`uwsd run`, `report`, `compare`, `predict`) and clean Python developer API. |
+
+---
+
+## 🧠 How It Works
+
+UWSD disambiguates target words by **substituting each candidate sense phrase into the target sentence** and measuring how well sentence meaning is preserved via context-aware sentence embeddings:
+
+```mermaid
+flowchart TD
+    A["Target Sentence<br/><i>'I wrote the backend in <b>java</b>.'</i>"] --> B["Sense Inventory Candidates<br/>• <i>'programming language'</i><br/>• <i>'javanese island'</i>"]
+    B --> C["In-Context Phrase Substitution<br/>• <i>'I wrote the backend in <b>programming language</b>.'</i><br/>• <i>'I wrote the backend in <b>javanese island</b>.'</i>"]
+    C --> D["Context-Aware Encoder<br/><i>(BERT / SBERT / Custom Model)</i>"]
+    D --> E["Cosine Similarity Scoring<br/><i>Compare substituted embeddings to original embedding</i>"]
+    E --> F["Best Sense Prediction + Explanation<br/><b>Programming Language</b> <i>(sim: 0.95, margin: +0.06)</i>"]
+
+    style A fill:#2d3748,stroke:#4a5568,color:#fff
+    style B fill:#2b6cb0,stroke:#3182ce,color:#fff
+    style C fill:#2c5282,stroke:#3182ce,color:#fff
+    style D fill:#2b6cb0,stroke:#3182ce,color:#fff
+    style E fill:#2b6cb0,stroke:#3182ce,color:#fff
+    style F fill:#276749,stroke:#38a169,color:#fff
 ```
 
-Python ≥ 3.9. The CoarseWSD-20 dataset is bundled in this repo, so no download is required to get started.
+### ⚖️ Supervised vs. Unsupervised WSD
 
-## Quickstart (CLI)
+| Dimension | Supervised WSD | **UWSD (Unsupervised)** |
+| :--- | :--- | :--- |
+| **Sense-Annotated Labels** | Required (expensive, language-specific) | **None required** |
+| **Domain Adaptation** | Requires full model retraining | Swap encoder or sense inventory |
+| **Knowledge Source** | Human-labelled corpora | Pretrained language models / Embeddings |
+| **Interpretability** | Black-box classifier probabilities | Explicit substitution similarity margins |
+
+---
+
+## 📦 Installation
+
+UWSD requires **Python ≥ 3.9**. Clone the repository and install with optional extras based on your workflow:
 
 ```bash
-# List the available methods
+# Clone the repository
+git clone https://github.com/jorge-martinez-gil/uwsd
+cd uwsd
+
+# Core installation (numpy-only, lightweight baseline support)
+pip install -e .
+
+# Recommended: + Sentence-Transformers for BERT & SBERT methods
+pip install -e ".[bert]"
+
+# Full installation: + Gensim (WMD) and TensorFlow Hub (USE)
+pip install -e ".[all]"
+```
+
+> [!NOTE]
+> The **CoarseWSD-20** dataset is bundled directly inside the repository, so no additional downloads are needed to start benchmarking right away!
+
+---
+
+## 🚀 Quickstart (CLI)
+
+UWSD includes a single CLI binary (`uwsd`) with intuitive commands for benchmarking and single-sentence prediction:
+
+```bash
+# 1. List all available WSD methods & baselines
 uwsd list-methods
 
-# Run the Most-Frequent-Sense baseline on the full benchmark
+# 2. Run the Most-Frequent-Sense (MFS) baseline on CoarseWSD-20
 uwsd run --method mfs --output results/mfs.json
 
-# Run the context-aware similarity method with a sentence-transformer
+# 3. Run context-aware similarity with a Sentence-Transformer model
 uwsd run --method bert --model all-MiniLM-L6-v2 --output results/bert.json
 
-# Build a publication-ready comparison table (Markdown or LaTeX)
+# 4. Generate publication-ready summary tables (Markdown or LaTeX)
 uwsd report results/*.json --format markdown
 uwsd report results/*.json --format latex --caption "Unsupervised WSD on CoarseWSD-20."
 
-# Statistical significance between two systems (paired bootstrap + McNemar)
-uwsd run --method mfs    --output results/mfs.json    --keep-correct
-uwsd run --method bert   --output results/bert.json   --keep-correct
+# 5. Compute statistical significance between two models (Paired Bootstrap + McNemar test)
+uwsd run --method mfs  --output results/mfs.json  --keep-correct
+uwsd run --method bert --output results/bert.json --keep-correct
 uwsd compare results/bert.json results/mfs.json
 
-# Disambiguate a single sentence interactively, with an explanation
+# 6. Disambiguate a single sentence interactively with a full explanation
 uwsd predict --method bert \
   --sentence "i wrote the backend in java ." --target java \
   --senses "isl=javanese island" "prog=programming language"
 ```
 
-Every `run` writes a **reproducibility manifest** (`--output`) recording the method/encoder config, per-word and overall metrics, a 95% bootstrap CI, the environment versions, the git commit, and a timestamp. Add `--keep-predictions` to store every per-instance prediction with its explanation.
+> [!TIP]
+> Every `uwsd run` command automatically outputs a **reproducibility manifest** (`--output`) capturing metrics, 95% bootstrap confidence intervals, python environment details, git commit hash, and hardware properties.
 
-## Reproducing the published experiments
+---
 
-The harness reproduces the paper's baselines from the bundled data with a single command. As an integrity check, the **Most-Frequent-Sense baseline reproduces the paper's number exactly**:
+## 📊 Benchmark Results
 
-```
-$ uwsd run --method mfs
-=== mfs on CoarseWSD-20 ===
-  instances : 10,196
-  hits      : 7,487
-  accuracy  : 73.43%  (95% CI [72.57, 74.25])
-```
+### Published Paper Results (CoarseWSD-20, 10,196 Test Instances)
 
-This matches the **7,487 hits / 73.43%** reported in the paper. The neural methods (`bert`, `sbert`) require `pip install -e ".[bert]"` and download their model weights on first use; run them the same way (`uwsd run --method bert --model all-MiniLM-L6-v2`).
+| Strategy | Hits | Accuracy |
+| :--- | :---: | :---: |
+| 🥇 **UWSD + BERT** | **7,927** | **77.74%** |
+| 🥈 **MFS Baseline** *(supervised reference)* | 7,487 | 73.43% |
+| 🥉 **UWSD + USE** | 7,335 | 71.94% |
+| 🔹 **UWSD + ELMo** | 7,010 | 68.75% |
+| 🔹 **UWSD + WMD** | 5,868 | 57.55% |
+| 🔸 **Random Baseline** | 4,459 | 43.73% |
 
-## Evaluate your own WSD algorithm
+### Harness Verified Reproductions (with 95% Bootstrap CIs)
 
-1. Implement a method (see below) or point an existing one at your data.
-2. Run it: `uwsd run --method <name> --output results/<name>.json --keep-correct`.
-3. Compare against baselines with significance testing: `uwsd compare results/<name>.json results/mfs.json`.
-4. Drop the manifests into a table: `uwsd report results/*.json --format latex`.
+| Method | Hits / Total | Accuracy | 95% Bootstrap CI | Reproducibility Manifest |
+| :--- | :---: | :---: | :---: | :---: |
+| **MFS Baseline** *(uses labels)* | 7,487 / 10,196 | 73.43% | [72.57%, 74.25%] | Exact match with paper |
+| **Random** *(seeded)* | 4,506 / 10,196 | 44.19% | [43.26%, 45.18%] | Verified harness baseline |
 
-Because every method is evaluated through the same loader, metrics, and confidence intervals, comparisons are apples-to-apples.
-
-## Add a new embedding model / similarity measure
-
-Adding a method is a few lines — it then works from the CLI automatically:
-
-```python
-from uwsd.methods import register_method, WSDMethod, Prediction
-
-@register_method("my-method", description="My great WSD idea.")
-class MyMethod(WSDMethod):
-    def predict(self, instance, task):
-        scores = {lid: my_score(instance, task, lid) for lid in task.label_ids}
-        best = max(scores, key=scores.get)
-        return Prediction(label_id=best, label=task.classes[best], scores=scores,
-                          confidence=scores[best], explanation="...")
+```bash
+# Verify the paper's exact MFS baseline number (7,487 hits / 73.43%):
+uwsd run --method mfs
 ```
 
-To benchmark a **new embedding model**, just pass it: `uwsd run --method bert --model <hf-model-name>`. To benchmark a **new similarity measure**, subclass `uwsd.methods.similarity.SubstitutionSimilarity` and override the scoring, or plug in a custom `Encoder` (any object with `encode(list[str]) -> np.ndarray`).
+---
 
-## Python API
+## 🐍 Python API
+
+Incorporate UWSD directly into your Python experiments or evaluation scripts:
 
 ```python
 from uwsd import load_coarsewsd20, get_method
 from uwsd.evaluate import evaluate
 
-ds = load_coarsewsd20()                       # bundled benchmark
+# 1. Load the bundled CoarseWSD-20 dataset
+dataset = load_coarsewsd20()
+
+# 2. Instantiate a context-aware transformer method
 method = get_method("bert", model="all-MiniLM-L6-v2")
-manifest = evaluate(method, ds, keep_predictions=True)
-print(manifest["metrics"]["micro_accuracy"], manifest["metrics"]["accuracy_ci95"])
+
+# 3. Run evaluation & generate metrics with confidence intervals
+manifest = evaluate(method, dataset, keep_predictions=True)
+
+# 4. Access micro-accuracy & 95% confidence intervals
+print(f"Accuracy: {manifest['metrics']['micro_accuracy']:.2%}")
+print(f"95% CI:   {manifest['metrics']['accuracy_ci95']}")
 ```
 
-## Interpretability
+---
 
-Every prediction is interpretable by construction. It carries the candidate senses, their similarity scores, a confidence value, a human-readable explanation of *why* the sense was chosen, and a low-confidence flag when the top candidates are close:
+## 🛠️ Evaluate Your Own WSD Algorithm
 
+You can register a custom WSD method in just a few lines of code:
+
+```python
+from uwsd.methods import register_method, WSDMethod, Prediction
+
+@register_method("my-method", description="Custom contextual similarity method.")
+class MyCustomWSD(WSDMethod):
+    def predict(self, instance, task):
+        # Compute custom sense similarity scores
+        scores = {label_id: my_score_fn(instance, task, label_id) for label_id in task.label_ids}
+        best_id = max(scores, key=scores.get)
+        
+        return Prediction(
+            label_id=best_id,
+            label=task.classes[best_id],
+            scores=scores,
+            confidence=scores[best_id],
+            explanation=f"Selected {task.classes[best_id]} based on custom score."
+        )
 ```
-Predicted: programming language  (confidence 71.0%)
-Why: Replacing 'java' with the sense phrase 'programming language' best preserved
-     sentence meaning (cosine=0.95, margin=0.06). Candidates:
-     'programming language'->sim=0.95; 'javanese island'->sim=0.89.
+
+Once defined, your method is automatically recognized by `uwsd run --method my-method`!
+
+---
+
+## 🔍 Interpretability & Explanations
+
+Every prediction produced by UWSD is fully interpretable. It details candidate similarity scores, confidence margin, and explicit reasoning:
+
+```text
+Predicted: programming language (confidence: 95.0%)
+Why: Replacing 'java' with sense phrase 'programming language' best preserved sentence meaning 
+     (cosine=0.95, margin=0.06). 
+Candidates:
+  • 'programming language' -> cosine sim = 0.95
+  • 'javanese island'      -> cosine sim = 0.89
 ```
 
-## Results
+---
 
-**Reported in the paper** (CoarseWSD-20, accuracy):
+## 📁 Dataset Details
 
-| Strategy | Hits | Accuracy |
-| --- | --- | --- |
-| UWSD+BERT | 7,927 | 77.74% |
-| MFS-Baseline | 7,487 | 73.43% |
-| UWSD+USE | 7,335 | 71.94% |
-| UWSD+ELMo | 7,010 | 68.75% |
-| UWSD+WMD | 5,868 | 57.55% |
-| RO-Baseline | 4,459 | 43.73% |
+UWSD evaluates on **[CoarseWSD-20](https://github.com/danlou/bert-disambiguation)** (Loureiro et al., 2021), a benchmark targeting 20 coarse-grained ambiguous nouns (e.g., *apple*, *bank*, *crane*, *java*, *python*, *mole*) spanning 10,196 test instances.
 
-**Reproduced by this harness** (with 95% bootstrap CIs; `git` commit and full manifest under `results/`):
+To use custom datasets formatted like CoarseWSD-20, simply set the environment variable:
+```bash
+export UWSD_DATA="/path/to/custom/dataset"
+```
 
-| Method | Hits | Accuracy | 95% CI |
-| --- | --- | --- | --- |
-| MFS (uses train labels) | 7,487/10,196 | 73.43% | [72.57, 74.25] |
-| Random (seeded) | 4,506/10,196 | 44.19% | [43.26, 45.18] |
+---
 
-The MFS reproduction matches the paper exactly. Neural baselines (`bert`, `sbert`, `use`, `wmd`) reproduce the same way once their optional dependencies and model weights are available; run `uwsd run --method bert` to regenerate them and append to the table with `uwsd report`.
+## 📚 Citation
 
-## Dataset
-
-[CoarseWSD-20](https://github.com/danlou/bert-disambiguation) (Loureiro et al., 2021) is a coarse-grained WSD benchmark over 20 ambiguous words (e.g. *bank*, *java*, *crane*), with 10,196 test instances. It is bundled under `CoarseWSD-20/`. Set the `UWSD_DATA` environment variable to point the loader at a different copy or another dataset in the same layout.
-
-## Citation
+If you use this codebase, benchmark harness, or context-aware similarity approach in your research, please cite our paper:
 
 ```bibtex
 @inproceedings{martinez2023b,
@@ -207,18 +252,31 @@ The MFS reproduction matches the paper exactly. Neural baselines (`bert`, `sbert
 }
 ```
 
-A machine-readable [`CITATION.cff`](CITATION.cff) is also provided.
+A machine-readable [`CITATION.cff`](CITATION.cff) file is also provided in this repository.
 
-## Research that has cited this work
+### 📖 Research Citing This Work
 
-1. **[Pantip Multi-turn Datasets Generating from Thai Large Social Platform Forum Using Sentence Similarity Techniques](https://ieeexplore.ieee.org/iel8/10799229/10799211/10799403.pdf)** — A. Sae-Oueng, K. Kerdthaisong, et al. *Joint Symposium*, 2024 (IEEE).
-2. **[Assessing GPT's Potential for Word Sense Disambiguation: A Quantitative Evaluation on Prompt Engineering Techniques](https://doi.org/10.1109/icsgrc62081.2024.10691283)** — D. Sumanathilaka, N. Micallef, J. Hough. *IEEE ICSGRC*, 2024.
-3. **[GlossGPT: GPT for Word Sense Disambiguation using Few-shot Chain-of-Thought Prompting](https://www.sciencedirect.com/science/article/pii/S1877050925008385)** — D. Sumanathilaka, N. Micallef, J. Hough. *Procedia Computer Science*, 2025 (Elsevier).
+1. **[Pantip Multi-turn Datasets Generating from Thai Large Social Platform Forum Using Sentence Similarity Techniques](https://ieeexplore.ieee.org/iel8/10799229/10799211/10799403.pdf)**  
+   *A. Sae-Oueng, K. Kerdthaisong, et al.* — IEEE Joint Symposium, 2024.
+2. **[Assessing GPT's Potential for Word Sense Disambiguation: A Quantitative Evaluation on Prompt Engineering Techniques](https://doi.org/10.1109/icsgrc62081.2024.10691283)**  
+   *D. Sumanathilaka, N. Micallef, J. Hough* — IEEE ICSGRC, 2024.
+3. **[GlossGPT: GPT for Word Sense Disambiguation using Few-shot Chain-of-Thought Prompting](https://www.sciencedirect.com/science/article/pii/S1877050925008385)**  
+   *D. Sumanathilaka, N. Micallef, J. Hough* — Elsevier Procedia Computer Science, 2025.
 
-## Contributing
+---
 
-Contributions of new methods, encoders, datasets, and metrics are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Run the test suite with `pytest`.
+## 🤝 Contributing
 
-## License
+Contributions of new WSD algorithms, transformer backends, dataset loaders, or evaluation metrics are welcome!  
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on code style and testing.
 
-Released under the MIT License. [View License](LICENSE).
+```bash
+# Run unit tests
+python -m pytest
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
