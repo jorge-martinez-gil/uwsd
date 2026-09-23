@@ -239,16 +239,17 @@ export UWSD_DATA="/path/to/custom/dataset"
 If you use this codebase, benchmark harness, or context-aware similarity approach in your research, please cite our paper:
 
 ```bibtex
-@inproceedings{martinez2023b,
-  author     = {Jorge Martinez-Gil},
-  title      = {Context-Aware Semantic Similarity Measurement for Unsupervised Word Sense Disambiguation},
-  journal    = {CoRR},
-  volume     = {abs/2305.03520},
-  year       = {2023},
-  url        = {https://arxiv.org/abs/2305.03520},
-  doi        = {https://doi.org/10.48550/arXiv.2305.03520},
-  eprinttype = {arXiv},
-  eprint     = {2305.03520}
+@article{MartinezGil2026,
+  author  = {Martinez-Gil, Jorge},
+  title   = {Context-aware semantic similarity measurement for unsupervised word sense disambiguation},
+  journal = {Applied Intelligence},
+  year    = {2026},
+  volume  = {56},
+  number  = {15},
+  pages   = {438},
+  doi     = {10.1007/s10489-026-07492-8},
+  url     = {https://doi.org/10.1007/s10489-026-07492-8},
+  issn    = {1573-7497}
 }
 ```
 
