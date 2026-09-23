@@ -9,7 +9,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Dataset](https://img.shields.io/badge/Dataset-CoarseWSD--20-orange.svg?style=flat-square)](https://github.com/danlou/bert-disambiguation)
-[![Citations](https://img.shields.io/badge/Scholar-3%20Citations-4285F4.svg?style=flat-square&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
+[![Citations](https://img.shields.io/badge/Scholar-4%20Citations-4285F4.svg?style=flat-square&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=X1pRUYcAAAAJ:7XUxBq3GufIC)
 
 [Published Paper](https://doi.org/10.1007/s10489-026-07492-8) • [arXiv](https://arxiv.org/abs/2305.03520) • [Medium Article](https://medium.com/@jorgemarcc/applications-of-context-aware-semantic-similarity-9c62492be392) • [Quickstart](#-quickstart-cli) • [Python API](#-python-api) • [Citation](#-citation)
 
