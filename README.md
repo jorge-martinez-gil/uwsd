@@ -43,12 +43,7 @@ flowchart LR
 
 For example, candidate substitutions for `java` in `i wrote the backend in java .` could use `programming language` or `javanese island`. The encoder scores how closely each rewritten sentence preserves the original meaning; the example's prediction depends on the chosen encoder.
 
-Formally, for context $c$, target $w$, candidate senses $S(w)$, sense phrase $p_s$, and sentence encoder $E$:
 
-$$
-\hat{s} = \operatorname*{arg\,max}_{s \in S(w)}
-\cos\!\left(E(c), E(c[w \leftarrow p_s])\right).
-$$
 
 Here, **unsupervised** means that the substitution method does not learn from the benchmark's sense labels. It still needs a supplied sense inventory and a pretrained encoder; the encoder may itself have used supervised pretraining or fine-tuning. Test labels are used for evaluation. The MFS reference baseline uses training labels.
 
